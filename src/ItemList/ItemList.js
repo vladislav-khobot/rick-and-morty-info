@@ -1,8 +1,11 @@
 import React from 'react';
 
 function ItemList(props) {
+  const { value } = props;
  return(
-   <div>item-list</div>
+   <li>
+    <a href={value}>Test</a>
+   </li>
  );
 }
 

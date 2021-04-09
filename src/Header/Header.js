@@ -1,9 +1,12 @@
 import React from 'react';
 
-function Header(props) {
- return(
-   <div>Header</div>
- );
-}
+  function Header(props) {
+    const { value } = props; 
+    return(
+      <div className="header">
+        {value}
+      </div>
+    );
+  }
 
 export { Header };

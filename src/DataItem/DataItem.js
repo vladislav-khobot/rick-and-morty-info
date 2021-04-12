@@ -1,11 +1,12 @@
 import React from 'react';
 
 function DataItem(props) {
+ const { title, value} = props;
  return(
   <div>
-    {props.title} 
+    {title} 
     <span>
-      {props.value}
+      {value}
     </span>
   </div>
  );

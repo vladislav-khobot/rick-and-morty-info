@@ -2,7 +2,7 @@ import React from 'react';
 
 function TextLabel(props) {
  return(
-   <div></div>
+   <div>{props.text}</div>
  );
 }
 

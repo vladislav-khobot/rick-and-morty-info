@@ -2,7 +2,12 @@ import React from 'react';
 
 function DataItem(props) {
  return(
-   <div></div>
+  <div>
+    {props.title} 
+    <span>
+      {props.value}
+    </span>
+  </div>
  );
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
 
 function ItemList(props) {
- const { value } = props;
+ const { href, value } = props;
  return(
-   <li>
-    <a href={value}>Test</a>
+   <li key={href}>
+    <a href={`#${href}`}>{value}</a>
    </li>
  );
 }

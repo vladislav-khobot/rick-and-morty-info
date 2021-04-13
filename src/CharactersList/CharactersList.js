@@ -13,7 +13,8 @@ function CharactersList(props) {
     next: null,
   });
 
-  async function getCharactersData (btnID = null) {
+  // TODO: useMemo / useCallback
+  async function getCharactersData(btnID = null) {
 
     const responseData = await getCharactersList(btnID, currentPage);
     if (!responseData || !responseData.results) {
@@ -30,6 +31,7 @@ function CharactersList(props) {
 
   };
 
+  // TODO: useCallback
   function onNavigationClick(btnID) {
     getCharactersData (btnID);
     onPageChange(currentPage);  

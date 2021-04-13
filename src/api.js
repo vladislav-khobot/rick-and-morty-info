@@ -5,7 +5,7 @@ const headers = {
   'accept': 'application/json',  
 }
 
-async function getCharactersList(btnID = null, currentPage = null) {
+async function getCharactersList(btnID = null, currentPage) {
   
   let url = null;
 

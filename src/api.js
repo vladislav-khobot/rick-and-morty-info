@@ -42,11 +42,11 @@ async function getCharactersList(btnID = null, currentPage) {
 
 }
 
-async function getCharactersInfo(personID) {
+async function getCharacterInfo(characterID) {
 
   try {
 
-    const response = await fetch(`${apiURL}/character/${personID}`, {
+    const response = await fetch(`${apiURL}/character/${characterID}`, {
       method: 'GET',
       headers: headers,
     });
@@ -59,4 +59,4 @@ async function getCharactersInfo(personID) {
 
 }
 
-export { getCharactersList, getCharactersInfo };
+export { getCharactersList, getCharacterInfo };

@@ -3,12 +3,12 @@ import { Button } from '../Button';
 
 function NavigationButtons(props) {
 
-  const { onNavigationClick } = props;
+  const { onClick } = props;
 
   return(
     <div className="NavigationButtons">
-      <Button id="btnPrev" name="Prev" onNavigationClick={onNavigationClick}/>
-      <Button id="btnNext" name="Next" onNavigationClick={onNavigationClick}/>  
+      <Button id="btnPrev" name="Prev" onClick={onClick}/>
+      <Button id="btnNext" name="Next" onClick={onClick}/>  
     </div>
   );
 }

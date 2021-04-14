@@ -13,8 +13,7 @@ function CharactersList(props) {
     next: null,
   });
 
-  // TODO: useMemo / useCallback
-  async function getCharactersData(btnID = null) {
+  const getCharactersData = useCallback(async (btnID = null) => {
 
     const responseData = await getCharactersList(btnID, currentPage);
     if (!responseData || !responseData.results) {
@@ -27,15 +26,14 @@ function CharactersList(props) {
     } 
 
     setCharactersData(responseData.results);
-    setCurrentPage(responseData.info); 
+    setCurrentPage(responseData.info);
 
-  };
+  },[setCharactersData, currentPage]);
 
-  // TODO: useCallback
-  function onNavigationClick(btnID) {
+  const onNavigationClick = useCallback((btnID) => {
     getCharactersData (btnID);
-    onPageChange(currentPage);  
-  }
+    onPageChange(currentPage);
+  }, [currentPage, getCharactersData, onPageChange]);
 
   useEffect(() => {
     getCharactersData();  
@@ -51,7 +49,7 @@ function CharactersList(props) {
           );
         })}
       </ul>
-      <NavigationButtons onNavigationClick={onNavigationClick}/>
+      <NavigationButtons onClick={onNavigationClick}/>
     </div>
   );
 }

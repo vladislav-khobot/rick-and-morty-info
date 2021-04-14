@@ -1,9 +1,9 @@
 import React from 'react';
 
 function Button(props) {
-  const { id, name, onNavigationClick } = props; // TODO: rename props onNavigationClick
+  const { id, name, onClick } = props;
  return(
-   <button type="button" onClick={() => onNavigationClick(id)}>{name}</button>
+   <button type="button" onClick={() => onClick(id)}>{name}</button>
  );
 }
 

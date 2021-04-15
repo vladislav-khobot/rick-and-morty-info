@@ -8,6 +8,7 @@ function CharactersInfo(props) {
   const { currentID, onChangeID } = props;
   const [ characterInfo, setCharacterInfo ] = useState({});
 
+
   const onChange = useCallback((event) => {
     
     const targetID = event.target.valueAsNumber;

@@ -6,7 +6,7 @@ import { getCharactersList } from '../api';
 
 function CharactersList(props) {
 
-  const { onPageChange } = props;
+  const { onPageChange, onClick } = props;
   const [ charactersData, setCharactersData ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState({
     prev: null,
@@ -45,7 +45,7 @@ function CharactersList(props) {
       <ul>
         {charactersData.map((character, i) => {
           return (
-            <ItemList href={character.id} value={character.name} key={character.id}/>
+            <ItemList href={character.id} value={character.name} key={character.id} onClick={onClick}/>
           );
         })}
       </ul>

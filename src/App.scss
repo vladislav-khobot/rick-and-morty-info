@@ -115,7 +115,7 @@ button {
 }
 
 .character-avatar {
-  background-image: url('./images/no-image-available.png');
+  // background-image: url('./images/no-image-available.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 220px;
@@ -132,5 +132,25 @@ button {
 
   div {
     margin: 4px;
+  }
+}
+
+.loaded {
+  animation: showInfo 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes showInfo {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
   }
 }

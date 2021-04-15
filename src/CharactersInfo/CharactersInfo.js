@@ -5,20 +5,25 @@ import { getCharacterInfo } from '../api';
 
 function CharactersInfo(props) {
 
+  const { currentID } = props;
+
   const [ characterID, setCharacterID ] = useState(null);
   const [ characterInfo, setCharacterInfo ] = useState({});
+  const [ toggleActive, setToggleActive ] = useState(false);
 
+  // setToggleActive(!toggleActive); console.log(toggleActive);
   const onChange = useCallback((event) => {
     
     const currentID = event.target.valueAsNumber;
-    if(currentID) {
-      setCharacterID(currentID);
+    if(!currentID) {
+      setCharacterID(null);  
     }
+
+    setCharacterID(currentID);
 
   },[setCharacterID]);
 
   const onClick = useCallback( async () => {
-    console.log('click!');
     const responseData = await getCharacterInfo(characterID);
     if (!responseData) {
       setCharacterInfo({});
@@ -35,10 +40,17 @@ function CharactersInfo(props) {
 
   },[characterID]);
 
+  useEffect(() => {
+    if(currentID) {
+      setCharacterID(currentID);
+      onClick();
+    }
+  },[currentID, onClick]);
+
   return (
     <div className="characters-info">
       <FindInfo onChange={onChange} onClick={onClick}/>
-      <CharacterData characterInfo={characterInfo}/>
+      <CharacterData characterInfo={characterInfo} toggleActive={toggleActive}/>
     </div>
   );
 }

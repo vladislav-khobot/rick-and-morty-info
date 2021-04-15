@@ -5,27 +5,23 @@ import { getCharacterInfo } from '../api';
 
 function CharactersInfo(props) {
 
-  const { currentID } = props;
-
-  const [ characterID, setCharacterID ] = useState(null);
+  const { currentID, onChangeID } = props;
   const [ characterInfo, setCharacterInfo ] = useState({});
-  const [ toggleActive, setToggleActive ] = useState(false);
 
-  // setToggleActive(!toggleActive); console.log(toggleActive);
   const onChange = useCallback((event) => {
     
-    const currentID = event.target.valueAsNumber;
-    if(!currentID) {
-      setCharacterID(null);  
+    const targetID = event.target.valueAsNumber;
+    if(!targetID) {
+      onChangeID(null);  
       return;
     }
 
-    setCharacterID(currentID);
+    onChangeID(targetID);
 
-  },[setCharacterID]);
+  },[onChangeID]);
 
-  const onClick = useCallback( async () => { console.log(characterID);
-    const responseData = await getCharacterInfo(characterID);
+  const onClick = useCallback( async () => {
+    const responseData = await getCharacterInfo(currentID);
     if (!responseData) {
       setCharacterInfo({});
       return;
@@ -38,20 +34,18 @@ function CharactersInfo(props) {
     } 
 
     setCharacterInfo(responseData);
-
-  },[characterID]);
+  },[currentID]);
 
   useEffect(() => {
     if(currentID) {
-      setCharacterID(currentID);
       onClick();
-    }
+    } 
   },[currentID, onClick]);
 
   return (
     <div className="characters-info">
       <FindInfo onChange={onChange} onClick={onClick}/>
-      <CharacterData characterInfo={characterInfo} toggleActive={toggleActive}/>
+      <CharacterData characterInfo={characterInfo}/>
     </div>
   );
 }

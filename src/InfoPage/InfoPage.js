@@ -4,24 +4,16 @@ import { CharactersInfo } from '../CharactersInfo';
 
 function InfoPage(props) {
 
-  const [ prevPage, setPrevPage ] = useState(null);
-  const [ nextPage, setNextPage ] = useState(null);
-
   const [ currentID, setCurrentID ] = useState(null);
 
-  function onPageChange(currentPage) {
-    setPrevPage(currentPage.prev);
-    setNextPage(currentPage.next);
-  }
-
-  const onCharacterClick = useCallback((id) => {
+  const onChangeID = useCallback((id) => {
     setCurrentID(id);
   },[setCurrentID]);
 
   return(
     <div className="info-page">
-      <CharactersList onPageChange={onPageChange} onClick={onCharacterClick} />
-      <CharactersInfo currentID={currentID}/>  
+      <CharactersList onClick={onChangeID} />
+      <CharactersInfo currentID={currentID} onChangeID={onChangeID}/>  
     </div>
   );
 }

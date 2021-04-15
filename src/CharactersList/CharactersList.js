@@ -6,7 +6,7 @@ import { getCharactersList } from '../api';
 
 function CharactersList(props) {
 
-  const { onPageChange, onClick } = props;
+  const { onClick } = props;
   const [ charactersData, setCharactersData ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState({
     prev: null,
@@ -32,8 +32,7 @@ function CharactersList(props) {
 
   const onNavigationClick = useCallback((btnID) => {
     getCharactersData (btnID);
-    onPageChange(currentPage);
-  }, [currentPage, getCharactersData, onPageChange]);
+  }, [getCharactersData]);
 
   useEffect(() => {
     getCharactersData();  

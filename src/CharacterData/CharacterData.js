@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { DataItem } from '../DataItem';
 import defaultImage from '../images/no-image-available.png';
 
@@ -6,7 +6,8 @@ const isEmptyObj = obj => !Object.keys(obj).length;
 
 function CharacterData(props) {
 
-  const { characterInfo, toggleActive } = props;
+  const { characterInfo } = props;
+  const refAnimation = useRef(null);
 
   const avatarStyle = useCallback(() => (
     { 
@@ -14,8 +15,12 @@ function CharacterData(props) {
     }
   ),[characterInfo]);
 
+  useEffect(() => {
+    refAnimation.current.classList.toggle('loaded');
+  });
+
   return(
-  <form className={toggleActive ? "character-data" : "character-data loaded"}>
+  <form ref={refAnimation} className={"character-data"}>
     <div className="character-avatar" style={avatarStyle()}/>
     <div className="character-content">
       <DataItem title={'Info from server:'} value={(characterInfo && !isEmptyObj(characterInfo))  ? 'sucess!' : ''}/>

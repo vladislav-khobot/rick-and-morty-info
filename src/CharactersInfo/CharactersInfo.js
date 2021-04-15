@@ -17,13 +17,14 @@ function CharactersInfo(props) {
     const currentID = event.target.valueAsNumber;
     if(!currentID) {
       setCharacterID(null);  
+      return;
     }
 
     setCharacterID(currentID);
 
   },[setCharacterID]);
 
-  const onClick = useCallback( async () => {
+  const onClick = useCallback( async () => { console.log(characterID);
     const responseData = await getCharacterInfo(characterID);
     if (!responseData) {
       setCharacterInfo({});

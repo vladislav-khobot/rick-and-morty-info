@@ -1,28 +1,18 @@
-import { React, useState, useCallback, useEffect } from 'react';
+import { React, useState, useCallback, useEffect, useRef } from 'react';
 import { FindInfo } from '../FindInfo/FindInfo';
 import { CharacterData } from '../CharacterData';
 import { getCharacterInfo } from '../api';
 
 function CharactersInfo(props) {
 
-  const { currentID, onChangeID } = props;
+  const { currentID } = props;
   const [ characterInfo, setCharacterInfo ] = useState({});
+  const inputRef = useRef(null);
 
-
-  const onChange = useCallback((event) => {
-    
-    const targetID = event.target.valueAsNumber;
-    if(!targetID) {
-      onChangeID(null);  
-      return;
-    }
-
-    onChangeID(targetID);
-
-  },[onChangeID]);
+  const [ animate, setAnimate ] = useState(false);
 
   const onClick = useCallback( async () => {
-    const responseData = await getCharacterInfo(currentID);
+    const responseData = await getCharacterInfo(inputRef.current.value);
     if (!responseData) {
       setCharacterInfo({});
       return;
@@ -35,17 +25,23 @@ function CharactersInfo(props) {
     } 
 
     setCharacterInfo(responseData);
-  },[currentID]);
+  },[inputRef]);
 
-  useEffect(() => {
+  useEffect(() => { 
+    inputRef.current.value = currentID;
     if(currentID) {
       onClick();
     } 
   },[currentID, onClick]);
 
+  async function clickWithAnimate() {
+    await setAnimate(!animate);
+    await onClick(); 
+  }
+
   return (
     <div className="characters-info">
-      <FindInfo onChange={onChange} onClick={onClick}/>
+      <FindInfo onClick={clickWithAnimate} inputRef={inputRef}/>
       <CharacterData characterInfo={characterInfo}/>
     </div>
   );

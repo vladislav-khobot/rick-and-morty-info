@@ -13,7 +13,7 @@ function InfoPage(props) {
   return(
     <div className="info-page">
       <CharactersList onClick={onChangeID} />
-      <CharactersInfo currentID={currentID} onChangeID={onChangeID}/>  
+      <CharactersInfo currentID={currentID}/>  
     </div>
   );
 }

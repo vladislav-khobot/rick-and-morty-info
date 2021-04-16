@@ -1,3 +1,3 @@
-import { InfoPage } from './InfoPage';
+import { InfoPage, OnClickContext } from './InfoPage';
 
-export { InfoPage };
+export { InfoPage, OnClickContext };

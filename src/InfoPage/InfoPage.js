@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { CharactersList } from '../CharactersList';
 import { CharactersInfo } from '../CharactersInfo';
 
+const OnClickContext = React.createContext();
+
 function InfoPage(props) {
   const [ currentID, setCurrentID ] = useState(null);
 
@@ -11,10 +13,12 @@ function InfoPage(props) {
 
   return(
     <div className="info-page">
-      <CharactersList onClick={onChangeID} />
+      <OnClickContext.Provider value={onChangeID}>
+        <CharactersList/>
+      </OnClickContext.Provider>
       <CharactersInfo currentID={currentID}/>  
     </div>
   );
 }
 
-export { InfoPage };
+export { InfoPage, OnClickContext };

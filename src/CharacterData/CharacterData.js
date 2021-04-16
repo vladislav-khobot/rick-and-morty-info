@@ -22,7 +22,7 @@ function CharacterData(props) {
   <form ref={refAnimation} className={"character-data"}>
     <div className="character-avatar" style={avatarStyle()}/>
     <div className="character-content">
-      <DataItem title={'Info from server:'} value={(characterInfo && !isEmptyObj(characterInfo))  ? 'sucess!' : ''}/>
+      <DataItem title={'Info from server:'} value={(characterInfo && !isEmptyObj(characterInfo))  ? 'sucess!' : 'no info...'}/>
       <DataItem title={'ID:'} value={characterInfo.id ? characterInfo.id : ''}/>
       <DataItem title={'Name:'} value={characterInfo.name ? characterInfo.name : ''}/>
       <DataItem title={'Status:'} value={characterInfo.status ? characterInfo.status : ''}/>

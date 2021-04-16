@@ -32,6 +32,7 @@ body {
 
 ul {
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 ul {
@@ -75,13 +76,21 @@ input {
 
 button {
   padding: 4px 16px 4px 16px;
-  background-color: lightskyblue;
+  background-color: rgb(71, 182, 250);
   border-radius: 4px;
   outline: none;
 
   box-shadow: 0 0 6px 3px #ddd;
   border: 1px rgba(100, 148, 237, 0.288) solid;
   margin: 0 4px 0 4px;
+
+  &:hover {
+    background-color: rgb(137, 209, 253);
+  }
+  
+  &:active {
+    background: rgb(23, 138, 209);
+  }
 }
 
 .characters-info {
@@ -96,6 +105,7 @@ button {
 .find-info {
   display: flex;
   align-items: center;
+  margin: 6px;
 }
 
 .find-by-id-element {
@@ -134,6 +144,10 @@ button {
   }
 }
 
+.data-item-value {
+  margin-left: 4px;
+}
+
 .loaded {
   animation: showInfo 0.3s ease-in-out;
   animation-fill-mode: forwards;
@@ -151,5 +165,27 @@ button {
   100% {
     transform: translateY(0px);
     opacity: 1;
+  }
+}
+
+.stars-list {
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 6px;
+
+    &:before {
+      padding-right: 10px;
+      font-weight: bold;
+      color: #77AEDB;
+      content: "\2606";
+      transition-duration: 0.5s;
+    }  
+
+    &:hover::before {
+      color: #337AB7;
+      content: "\2605";
+    }
   }
 }

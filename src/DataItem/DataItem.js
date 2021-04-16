@@ -5,7 +5,7 @@ function DataItem(props) {
  return(
   <div>
     {title} 
-    <span>
+    <span className="data-item-value">
       {value}
     </span>
   </div>

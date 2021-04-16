@@ -5,7 +5,6 @@ import { NavigationButtons } from '../NavigationButtons';
 import { useCharactersList } from '../Hooks';
 
 function CharactersList(props) {
-  const { onClick } = props;
   const [ charactersData, setCharactersData ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState({
     prev: null,
@@ -25,10 +24,10 @@ function CharactersList(props) {
   return(
     <div className="charatcers-list">
       <Header value={"Choose character from list:"}/>
-      <ul>
+      <ul className="stars-list">
         {charactersData.map((character, i) => {
           return (
-            <ItemList href={character.id} value={character.name} key={character.id} onClick={onClick}/>
+            <ItemList href={character.id} value={character.name} key={character.id}/>
           );
         })}
       </ul>

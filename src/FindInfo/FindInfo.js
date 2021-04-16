@@ -1,9 +1,7 @@
 import React from 'react';
 
 function FindInfo(props) {
-
   const { onClick, inputRef } = props;
-
   return(
     <div className="find-info">
       <label htmlFor="idPersonInput" className="find-by-id-element">

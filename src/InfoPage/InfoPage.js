@@ -3,7 +3,6 @@ import { CharactersList } from '../CharactersList';
 import { CharactersInfo } from '../CharactersInfo';
 
 function InfoPage(props) {
-
   const [ currentID, setCurrentID ] = useState(null);
 
   const onChangeID = useCallback((id) => {

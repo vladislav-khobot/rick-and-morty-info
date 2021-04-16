@@ -2,10 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Header } from '../Header';
 import { ItemList } from '../ItemList';
 import { NavigationButtons } from '../NavigationButtons';
-import { getCharactersList } from '../api';
+import { useCharactersList } from '../Hooks';
 
 function CharactersList(props) {
-
   const { onClick } = props;
   const [ charactersData, setCharactersData ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState({
@@ -13,22 +12,7 @@ function CharactersList(props) {
     next: null,
   });
 
-  const getCharactersData = useCallback(async (btnID = null) => {
-
-    const responseData = await getCharactersList(btnID, currentPage);
-    if (!responseData || !responseData.results) {
-      return;
-    }
-
-    if (responseData.error) {
-      console.log(responseData.error);
-      return;
-    } 
-
-    setCharactersData(responseData.results);
-    setCurrentPage(responseData.info);
-
-  },[setCharactersData, currentPage]);
+  const getCharactersData = useCharactersList({ currentPage, setCharactersData, setCurrentPage });
 
   const onNavigationClick = useCallback((btnID) => {
     getCharactersData (btnID);

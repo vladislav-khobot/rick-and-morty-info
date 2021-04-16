@@ -5,7 +5,6 @@ import defaultImage from '../images/no-image-available.png';
 const isEmptyObj = obj => !Object.keys(obj).length;
 
 function CharacterData(props) {
-
   const { characterInfo } = props;
   const refAnimation = useRef(null);
 

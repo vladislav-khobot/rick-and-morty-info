@@ -1,12 +1,10 @@
 const apiURL = 'https://rickandmortyapi.com/api';
-
 const headers = {
   'content-type': 'application/json',
   'accept': 'application/json',  
 }
 
 async function getCharactersList(btnID = null, currentPage) {
-  
   let url = null;
 
   if (btnID === 'btnPrev') {
@@ -39,11 +37,9 @@ async function getCharactersList(btnID = null, currentPage) {
   } catch(error) {
       return error;
   }
-
 }
 
 async function getCharacterInfo(characterID) {
-
   try {
 
     const response = await fetch(`${apiURL}/character/${characterID}`, {
@@ -56,7 +52,6 @@ async function getCharacterInfo(characterID) {
   } catch(error) {
       return error;
   }
-
 }
 
 export { getCharactersList, getCharacterInfo };

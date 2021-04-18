@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Header } from '../Header';
-import { ItemList } from '../ItemList';
-import { NavigationButtons } from '../NavigationButtons';
-import { useCharactersList } from '../Hooks';
+import { Header } from '../../components/header';
+import { ItemList } from '../../components/itemList';
+import { NavigationButtons } from '../navigationButtons';
+import { useCharactersList } from '../../hooks';
 
 function CharactersList(props) {
   const [ charactersData, setCharactersData ] = useState([]);

@@ -1,0 +1,47 @@
+.charatcers-list {
+  flex-grow: 1;
+  border: 1px lightsteelblue solid;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  height: 96vh;
+  border-radius: 4px;
+  width: 376px;
+}
+
+ul {
+  overflow: scroll;
+  overflow-x: hidden;
+  li {
+    padding: 4px;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    a:hover {
+      color: steelblue;
+    }
+  }
+}
+
+.stars-list {
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 6px;
+
+    &:before {
+      padding-right: 10px;
+      font-weight: bold;
+      color: #77AEDB;
+      content: "\2606";
+      transition-duration: 0.5s;
+    }  
+
+    &:hover::before {
+      color: #337AB7;
+      content: "\2605";
+    }
+  }
+}

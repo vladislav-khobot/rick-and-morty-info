@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { getCharactersList } from '../api';
+import { getCharactersList } from '../assets/api/api';
 
 function useCharactersList(params) {
   const { currentPage, setCharactersData, setCurrentPage } = params;

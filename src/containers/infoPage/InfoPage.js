@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { CharactersList } from '../CharactersList';
-import { CharactersInfo } from '../CharactersInfo';
+import { CharactersList } from '../charactersList';
+import { CharactersInfo } from '../charactersInfo';
 
-const OnClickContext = React.createContext();
+const InfoPageContext = React.createContext();
 
-function InfoPage(props) {
+function InfoPage() {
   const [ currentID, setCurrentID ] = useState(null);
 
   const onChangeID = useCallback((id) => {
@@ -13,12 +13,12 @@ function InfoPage(props) {
 
   return(
     <div className="info-page">
-      <OnClickContext.Provider value={onChangeID}>
+      <InfoPageContext.Provider value={ { currentID, onChangeID} }>
         <CharactersList/>
-      </OnClickContext.Provider>
+      </InfoPageContext.Provider>
       <CharactersInfo currentID={currentID}/>  
     </div>
   );
 }
 
-export { InfoPage, OnClickContext };
+export { InfoPage, InfoPageContext };

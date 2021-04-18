@@ -1,0 +1,8 @@
+.active-link {
+  color: #337AB7;
+  &:after {
+    content: "\25C4";
+    padding-left: 10px;
+    font-weight: bold;
+  }
+}

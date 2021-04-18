@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { DataItem } from '../DataItem';
-import defaultImage from '../images/no-image-available.png';
+import { DataItem } from '../../components/dataItem';
+import defaultImage from '../../assets/images/no-image-available.png';
 
 const isEmptyObj = obj => !Object.keys(obj).length;
 

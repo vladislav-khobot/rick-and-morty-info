@@ -1,4 +1,4 @@
-import { useCharactersList } from '../Hooks/useCharactersList';
-import { useCharacterInfo } from '../Hooks/useCharacterInfo';
+import { useCharactersList } from './useCharactersList';
+import { useCharacterInfo } from './useCharacterInfo';
 
 export {useCharactersList, useCharacterInfo };

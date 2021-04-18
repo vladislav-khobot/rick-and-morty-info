@@ -1,10 +1,10 @@
 import { React } from 'react';
-import { Button } from '../Button';
+import { Button } from '../../components/button';
 
 function NavigationButtons(props) {
   const { onClick } = props;
   return(
-    <div className="NavigationButtons">
+    <div className="navigation-buttons">
       <Button id="btnPrev" name="Prev" onClick={onClick}/>
       <Button id="btnNext" name="Next" onClick={onClick}/>  
     </div>

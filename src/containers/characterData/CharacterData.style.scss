@@ -1,0 +1,50 @@
+.character-data {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 8px;
+  margin: 8px;
+  border: 1px lightsteelblue solid;
+  width: 546px;
+  border-radius: 4px;
+}
+
+.character-avatar {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 220px;
+  height: 220px;
+  margin: 8px;
+  border: 1px grey solid;
+}
+
+.character-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  div {
+    margin: 4px;
+  }
+}
+
+.loaded {
+  animation: showInfo 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes showInfo {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

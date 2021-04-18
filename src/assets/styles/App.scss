@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  background-image: url('../images/background.png');
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+input {
+  border-radius: 4px;
+  outline: none;
+
+  box-shadow: 0 0 6px 3px #ddd;
+  border: 1px rgba(100, 148, 237, 0.288) solid;
+}

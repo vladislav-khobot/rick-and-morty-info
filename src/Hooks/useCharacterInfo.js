@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { getCharacterInfo } from '../api';
+import { getCharacterInfo } from '../assets/api/api';
 
 function useCharacterInfo(params) {
   const { inputRef, setCharacterInfo } = params;

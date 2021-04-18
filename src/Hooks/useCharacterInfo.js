@@ -2,9 +2,9 @@ import { useCallback } from 'react';
 import { getCharacterInfo } from '../assets/api/api';
 
 function useCharacterInfo(params) {
-  const { inputRef, setCharacterInfo } = params;
+  const { idValue, setCharacterInfo } = params;
   return useCallback( async () => {
-    const responseData = await getCharacterInfo(inputRef.current.value);
+    const responseData = await getCharacterInfo(idValue);
     if (!responseData) {
       setCharacterInfo({});
       return;
@@ -17,7 +17,7 @@ function useCharacterInfo(params) {
     } 
 
     setCharacterInfo(responseData);
-  },[inputRef, setCharacterInfo]);
+  },[idValue, setCharacterInfo]);
 }
 
 export { useCharacterInfo };

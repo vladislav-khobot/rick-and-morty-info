@@ -7,11 +7,11 @@ function CharactersInfo(props) {
   const { currentID } = props;
   const [ characterInfo, setCharacterInfo ] = useState({});
   const [ animate, setAnimate ] = useState(false);
-  const inputRef = useRef(null);
-  const updateCharacterData = useCharacterInfo({ inputRef, setCharacterInfo });
+  const [ idValue, setIdValue ] = useState(null);
+  const updateCharacterData = useCharacterInfo({ idValue, setCharacterInfo });
 
   useEffect(() => { 
-    inputRef.current.value = currentID;
+    // setIdValue(currentID);
     if(currentID) {
       updateCharacterData();
     } 
@@ -22,9 +22,14 @@ function CharactersInfo(props) {
     updateCharacterData();
   }, [animate, setAnimate, updateCharacterData]);
 
+  const updateIdValue = useCallback((newValue) => {
+    setIdValue(newValue);
+  },[setIdValue]);
+
+
   return (
     <div className="characters-info">
-      <FindInfo onClick={clickWithAnimate} inputRef={inputRef}/>
+      <FindInfo idValue={idValue} updateIdValue={updateIdValue} onClick={clickWithAnimate}/>
       <CharacterData characterInfo={characterInfo}/>
     </div>
   );

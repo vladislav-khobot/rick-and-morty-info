@@ -15,8 +15,8 @@ function InfoPage() {
     <div className="info-page">
       <InfoPageContext.Provider value={ { currentID, onChangeID} }>
         <CharactersList/>
-      </InfoPageContext.Provider>
-      <CharactersInfo currentID={currentID}/>  
+        <CharactersInfo/>
+      </InfoPageContext.Provider>  
     </div>
   );
 }

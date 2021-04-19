@@ -4,7 +4,7 @@ import { ItemList } from '../../components/itemList';
 import { NavigationButtons } from '../navigationButtons';
 import { useCharactersList } from '../../hooks';
 
-function CharactersList(props) {
+function CharactersList() {
   const [ charactersData, setCharactersData ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState({
     prev: null,

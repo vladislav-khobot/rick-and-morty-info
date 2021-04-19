@@ -1,35 +1,30 @@
-import { React, useState, useEffect, useRef, useCallback } from 'react';
+import { React, useState, useEffect, useCallback, useContext } from 'react';
 import { FindInfo } from '../../components/findInfo';
 import { CharacterData } from '../characterData';
 import { useCharacterInfo } from '../../hooks';
+import { InfoPageContext } from '../../containers/infoPage';
 
-function CharactersInfo(props) {
-  const { currentID } = props;
+function CharactersInfo() {
+  const { currentID, onChangeID } = useContext(InfoPageContext);
   const [ characterInfo, setCharacterInfo ] = useState({});
   const [ animate, setAnimate ] = useState(false);
-  const [ idValue, setIdValue ] = useState(null);
-  const updateCharacterData = useCharacterInfo({ idValue, setCharacterInfo });
+  const updateCharacterData = useCharacterInfo({ idValue: currentID, setCharacterInfo });
 
   useEffect(() => { 
-    // setIdValue(currentID);
     if(currentID) {
       updateCharacterData();
     } 
   },[currentID, updateCharacterData]);
 
-  const clickWithAnimate = useCallback(async () => {
+  const clickWithAnimate = useCallback(async (newID) => {
+    onChangeID(newID);
     setAnimate(!animate);
-    updateCharacterData();
-  }, [animate, setAnimate, updateCharacterData]);
-
-  const updateIdValue = useCallback((newValue) => {
-    setIdValue(newValue);
-  },[setIdValue]);
+  }, [animate, setAnimate, onChangeID]);
 
 
   return (
     <div className="characters-info">
-      <FindInfo idValue={idValue} updateIdValue={updateIdValue} onClick={clickWithAnimate}/>
+      <FindInfo currentID={currentID} onClick={clickWithAnimate}/>
       <CharacterData characterInfo={characterInfo}/>
     </div>
   );

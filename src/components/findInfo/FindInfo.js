@@ -1,11 +1,20 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 function FindInfo(props) {
-  const { idValue, updateIdValue, onClick } = props;
+  const { currentID, onClick } = props;
+  const [ idValue, setIDValue ] = useState("");
 
   const onInputChange = useCallback((event) => {
-    updateIdValue(event.target.value);
-  }, [updateIdValue]);
+    setIDValue(event.target.value);
+  }, [setIDValue]);
+
+  useEffect(() => {
+    setIDValue(currentID);
+  },[currentID]);
+
+  const submitID = useCallback(() => {
+    onClick(idValue);  
+  },[idValue, onClick]);
 
   return(
     <div className="find-info">
@@ -13,7 +22,7 @@ function FindInfo(props) {
         Enter ID a person, whose you want to find:
       </label>
       <input type="number" id="idPersonInput" value={idValue ? idValue : ""} onChange={onInputChange} className="find-by-id-element"/>
-      <button type="button" onClick={onClick}>
+      <button type="button" onClick={submitID}>
         Find info
       </button>
     </div>

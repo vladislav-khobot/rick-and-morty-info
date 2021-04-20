@@ -1,0 +1,18 @@
+button {
+  padding: 4px 16px 4px 16px;
+  background-color: rgb(71, 182, 250);
+  border-radius: 4px;
+  outline: none;
+
+  box-shadow: 0 0 6px 3px #ddd;
+  border: 1px rgba(100, 148, 237, 0.288) solid;
+  margin: 0 4px 0 4px;
+
+  &:hover {
+    background-color: rgb(137, 209, 253);
+  }
+  
+  &:active {
+    background: rgb(23, 138, 209);
+  }
+}

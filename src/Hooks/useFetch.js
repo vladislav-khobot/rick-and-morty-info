@@ -6,11 +6,10 @@ const headers = {
 }
 
 function useFetch(url) {
-
   const [ result, setResult ] = useState(null);
 
   useEffect(() => {
-
+    
     const res = async () => {
       try {
 
@@ -18,20 +17,20 @@ function useFetch(url) {
           method: 'GET',
           headers: headers,
         });
-    
-        return response.json();
+
+        return await response.json(); 
     
       } catch(error) {
           return error;
       }
     }
-
+    
     setResult(res());
 
-  }, [url]);
+  }, [url, setResult]);
 
+  console.log(result);
   return result;
-
 }
 
 export { useFetch };

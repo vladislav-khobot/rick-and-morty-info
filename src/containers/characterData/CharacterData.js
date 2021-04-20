@@ -11,22 +11,29 @@ function CharacterData(props) {
 
   useEffect(() => {
     refAnimation.current.classList.toggle('loaded');
-  });
+
+    // I haven't found any other working solution to accomplish this task
+    setTimeout(() => {
+      refAnimation.current.classList.toggle('loaded');
+    }, 500);
+  },[characterInfo]);
+
+  const isInfo = characterInfo && !isEmptyObj(characterInfo);
 
   return(
   <form ref={refAnimation} className={"character-data"}>
     <img src={backgroundImage} alt="" className="character-avatar"/>
     <div className="character-content">
-      <DataItem title="Info from server:" value={(characterInfo && !isEmptyObj(characterInfo))  ? "sucess!" : "no info..."}/>
-      <DataItem title="ID:" value={characterInfo.id ? characterInfo.id : ''}/>
-      <DataItem title="Name:" value={characterInfo.name ? characterInfo.name : ''}/>
-      <DataItem title="Status:" value={characterInfo.status ? characterInfo.status : ''}/>
-      <DataItem title="Species:" value={characterInfo.species ? characterInfo.species : ''}/>
-      <DataItem title="Type:" value={characterInfo.type ? characterInfo.type : ''}/>
-      <DataItem title="Gender:" value={characterInfo.gender ? characterInfo.gender : ''}/>
-      <DataItem title="Origin name:" value={characterInfo.origin ? characterInfo.origin.name : ''}/>
-      <DataItem title="Location name:" value={characterInfo.location ? characterInfo.location.name : ''}/>
-      <DataItem title="Created:" value={characterInfo.created ? `${characterInfo.created.slice(0, 10)} ${characterInfo.created.slice(11, 19)}` : ''}/>
+      <DataItem title="Info from server:" value={isInfo ? "sucess!" : "no info..."}/>
+      <DataItem title="ID:" value={isInfo ? characterInfo.id : ''}/>
+      <DataItem title="Name:" value={isInfo ? characterInfo.name : ''}/>
+      <DataItem title="Status:" value={isInfo ? characterInfo.status : ''}/>
+      <DataItem title="Species:" value={isInfo ? characterInfo.species : ''}/>
+      <DataItem title="Type:" value={isInfo ? characterInfo.type : ''}/>
+      <DataItem title="Gender:" value={isInfo ? characterInfo.gender : ''}/>
+      <DataItem title="Origin name:" value={isInfo ? characterInfo.origin.name : ''}/>
+      <DataItem title="Location name:" value={isInfo ? characterInfo.location.name : ''}/>
+      <DataItem title="Created:" value={isInfo ? `${characterInfo.created.slice(0, 10)} ${characterInfo.created.slice(11, 19)}` : ''}/>
     </div>
   </form>
   );

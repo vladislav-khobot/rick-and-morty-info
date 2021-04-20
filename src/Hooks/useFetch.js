@@ -10,7 +10,7 @@ function useFetch(url) {
 
   useEffect(() => {
     
-    const res = async () => {
+    const startFetch = async () => {
       try {
 
         const response = await fetch(url, {
@@ -18,18 +18,18 @@ function useFetch(url) {
           headers: headers,
         });
 
-        return await response.json(); 
+        const result = await response.json();
+        setResult(result); 
     
       } catch(error) {
-          return error;
+        setResult(error);
       }
     }
     
-    setResult(res());
+    startFetch();
 
-  }, [url, setResult]);
+  }, [url]);
 
-  console.log(result);
   return result;
 }
 

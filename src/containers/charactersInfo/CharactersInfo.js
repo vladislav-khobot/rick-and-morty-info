@@ -1,26 +1,24 @@
 import { React, useState, useEffect, useCallback, useContext } from 'react';
 import { FindInfo } from '../../components/findInfo';
 import { CharacterData } from '../characterData';
-import { useCharacterInfo } from '../../hooks';
 import { InfoPageContext } from '../../containers/infoPage';
+import { useInfo } from '../../hooks/useInfo';
 
 function CharactersInfo() {
   const { currentID, onChangeID } = useContext(InfoPageContext);
   const [ characterInfo, setCharacterInfo ] = useState({});
-  const [ animate, setAnimate ] = useState(false);
-  const updateCharacterData = useCharacterInfo({ idValue: currentID, setCharacterInfo });
 
-  useEffect(() => { 
-    if(currentID) {
-      updateCharacterData();
-    } 
-  },[currentID, updateCharacterData]);
+  const characterData = useInfo(currentID);
+
+  useEffect(() => {
+    if(characterData) {
+      setCharacterInfo(characterData);
+    }
+  }, [characterData]);
 
   const clickWithAnimate = useCallback(async (newID) => {
     onChangeID(newID);
-    setAnimate(!animate);
-  }, [animate, setAnimate, onChangeID]);
-
+  }, [onChangeID]);
 
   return (
     <div className="characters-info">

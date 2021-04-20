@@ -1,30 +1,35 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Header } from '../../components/header';
 import { ItemList } from '../../components/itemList';
 import { NavigationButtons } from '../navigationButtons';
 import { useList } from '../../hooks/useList';
 
 function CharactersList() {
+  const [ btnID, setBtnID ] = useState(null);
   const [ charactersData, setCharactersData ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState({
     prev: null,
     next: null,
   });
-  const [ btnID, setBtnID ] = useState(null);
 
-  const listData = useList({ btnID, currentPage }); // console.log(listData);
-  if (listData && listData.results) {
-    setCharactersData(listData.results);
-    setCurrentPage(listData.info);
-  }
+  const listData = useList({ btnID, currentPage });
 
-  if (listData && listData.error) {
-    console.log(listData.error);
-  } 
+  useEffect(() => {
+    if(listData) {
+      if(listData.results) {
+        setCharactersData(listData.results);
+      } 
+  
+      if (listData.error) {
+        console.log(listData.error);
+      }
+    }
+  }, [listData]);
 
   const onNavigationClick = useCallback((btnID) => {
     setBtnID(btnID);
-  }, [setBtnID]);
+    setCurrentPage(listData.info);
+  }, [setBtnID, listData]);
 
   return(
     <div className="charatcers-list">

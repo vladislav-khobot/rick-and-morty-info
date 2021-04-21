@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.style.scss';
 
 function Header(props) {
   const { value } = props; 

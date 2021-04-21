@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { CharactersList } from '../charactersList';
 import { CharactersInfo } from '../charactersInfo';
+import './InfoPage.style.scss';
 
 const InfoPageContext = React.createContext();
 

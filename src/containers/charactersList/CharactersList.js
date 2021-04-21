@@ -3,6 +3,7 @@ import { Header } from '../../components/header';
 import { ItemList } from '../../components/itemList';
 import { NavigationButtons } from '../navigationButtons';
 import { useList } from '../../hooks/useList';
+import './CharactersList.style.scss';
 
 function CharactersList() {
   const [ btnID, setBtnID ] = useState(null);

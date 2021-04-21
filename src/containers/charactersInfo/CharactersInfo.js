@@ -3,6 +3,7 @@ import { FindInfo } from '../../components/findInfo';
 import { CharacterData } from '../characterData';
 import { InfoPageContext } from '../../containers/infoPage';
 import { useInfo } from '../../hooks/useInfo';
+import './CharactersInfo.style.scss';
 
 function CharactersInfo() {
   const { currentID, onChangeID } = useContext(InfoPageContext);

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { DataItem } from '../../components/dataItem';
 import defaultImage from '../../assets/images/no-image-available.png';
+import './CharacterData.style.scss';
 
 const isEmptyObj = obj => !Object.keys(obj).length;
 
@@ -12,7 +13,6 @@ function CharacterData(props) {
   useEffect(() => {
     refAnimation.current.classList.toggle('loaded');
 
-    // I haven't found any other working solution to accomplish this task
     setTimeout(() => {
       refAnimation.current.classList.toggle('loaded');
     }, 500);

@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import './Button.style.scss';
 
 function Button(props) {
   const { id, name, onClick } = props;

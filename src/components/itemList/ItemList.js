@@ -1,5 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { InfoPageContext } from '../../containers/infoPage';
+import './ItemList.style.scss';
 
 function ItemList(props) {
   const { href, value } = props;

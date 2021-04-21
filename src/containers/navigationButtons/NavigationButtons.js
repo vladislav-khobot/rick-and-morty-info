@@ -1,5 +1,6 @@
 import { React } from 'react';
 import { Button } from '../../components/button';
+import './NavigationButtons.style.scss';
 
 function NavigationButtons(props) {
   const { onClick } = props;

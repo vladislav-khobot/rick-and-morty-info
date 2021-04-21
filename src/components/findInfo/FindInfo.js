@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import './FindInfo.style.scss';
 
 function FindInfo(props) {
   const { currentID, onClick } = props;

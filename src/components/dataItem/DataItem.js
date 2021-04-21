@@ -1,4 +1,5 @@
 import React from 'react';
+import './DataItem.style.scss';
 
 function DataItem(props) {
  const { title, value} = props;
